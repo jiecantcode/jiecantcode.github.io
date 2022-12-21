@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPY 10THHHHHHH</title>
+    <style>
+        body{
+            background: url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+            background-attachment: fixed;
+        }
+        button{
+            margin-top: 50vh;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            background-color: orange;
+            color: white;
+            width: 20%;
+            height: 100px;
+        }
+        img{
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        p{
+            display: none;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <img></img>
+    <p></p>
+    <button onclick="yea()">PRESS ME ALWAYS</button>
+</body>
+<script>
+    var i = 0;
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function message() {
+        document.querySelector("button").style.display = "none";
+        document.querySelector("img").style.marginTop = "37vh";
+        document.querySelector("p").innerHTML = "December is our 10th month being together mwehehehe";
+        await sleep(3500);
+        document.querySelector("p").innerHTML = "I hope that you will stay with me in all these hardships";
+        await sleep(3500);
+        document.querySelector("p").innerHTML = "I hope that you will love me with all your heart";
+        await sleep(3500);
+        document.querySelector("p").innerHTML = "Sa matagal na buwan na kasama ka";
+        await sleep(3500);
+        document.querySelector("p").innerHTML = "At kahit na malayo man ako";
+        await sleep(3500);
+        document.querySelector("p").innerHTML = "Panatilihin natin ang mabuting pagsasama mwehehe";
+        await sleep(3500);
+        document.querySelector("img").src = "https://media.discordapp.net/attachments/790981270485467158/1055114342674219070/851564_387545644704653_633174706_n.png";
+        document.querySelector("p").innerHTML = "ILOVEYOUSOMUCHHHH!!";
+        await sleep(3500);
+        document.querySelector("img").src = "https://cdn.discordapp.com/attachments/790981270485467158/1055114696484720670/851579_387545548037996_1630011955_n.png";
+        document.querySelector("p").innerHTML = "Bisag dragon kaayo ka hmmmpppp";
+        await sleep(3500);
+        document.querySelector("img").src = "https://cdn.discordapp.com/attachments/790981270485467158/1055115014261973012/851580_387545598037991_1255650947_n.png";
+        document.querySelector("p").innerHTML = "Always remember naay jie nga pirmi mag care nimo";
+        await sleep(3500);
+        document.querySelector("p").innerHTML = "Yun lang mwehehhehehehe";
+        await sleep(3500);
+        yea();
+    }
+
+    function yea(){
+        i++;
+        switch(i){
+            case 1:
+                alert("Hi my love");
+            break;
+            case 2:
+                alert("Alam mo ba");
+            break;
+            case 3:
+                alert("Ganda mo mwehehehehe");
+            break;
+            case 4:
+                alert("Look oh");
+            break;
+            case 5:
+                document.querySelector("img").style.display = "block";
+                document.querySelector("button").style.marginTop = "0";
+                document.querySelector("img").src = "https://media.discordapp.net/attachments/790981270485467158/1055107757721796699/320369455_689003832937079_1272654558658733014_n.png?width=369&height=656";
+            break;
+            case 6:
+                document.querySelector("button").style.marginTop = "50vh";
+                document.querySelector("img").style.display = "none";
+                alert("SO COTE!");
+            break;
+            case 7:
+                alert("eto naman yung gagstok mong bf");
+            break;
+            case 8:
+                document.querySelector("img").style.display = "block";
+                document.querySelector("button").style.marginTop = "0";
+                document.querySelector("img").src = "https://media.discordapp.net/attachments/790981270485467158/1055109925614923876/320780921_1126441381352526_4821117510577264666_n.png?width=497&height=655";
+            break;
+            case 9:
+                document.querySelector("button").style.marginTop = "50vh";
+                document.querySelector("img").style.display = "none";
+                alert("Love, this is my message for you");
+            break;
+            case 10:
+                document.querySelector("img").style.display = "block";
+                document.querySelector("button").style.marginTop = "0";
+                document.querySelector("img").src = "https://cdn.discordapp.com/attachments/790981270485467158/1055110649279168594/851586_641022919246653_843654861_n.png";
+                document.querySelector("p").style.display = "block";
+                message();
+            break;
+            default:
+                alert("TAPOS NA LOVE MWEHEHEH ILOVEYOU");
+            break;
+        }
+    }
+    
+</script>
+
+</html>
