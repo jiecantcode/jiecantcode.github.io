@@ -1,13 +1,16 @@
 <html>
-  <head>
-    <title>Dino Dino</title>
-    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/dinosaurs-15/1200/dinosaur_predator_extinct_animal_tyrannosaurus-1024.png">
-    <style>
-    *{
+
+<head>
+  <title>Dino Dino</title>
+  <link rel="icon"
+    href="https://cdn2.iconfinder.com/data/icons/dinosaurs-15/1200/dinosaur_predator_extinct_animal_tyrannosaurus-1024.png">
+  <style>
+    * {
       margin: 0;
       padding: 0;
     }
-    .arena{
+
+    .arena {
       display: block;
       position: relative;
       border: 1px solid black;
@@ -16,95 +19,123 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .man{
+
+    .man {
       height: 55px;
       width: 37px;
       position: absolute;
       top: 145px;
     }
-    .man img{
+
+    .man img {
       position: absolute;
       height: 75px;
       width: 50px;
       left: -5px;
       top: -9px;
     }
-    @keyframes jump{
+
+    @keyframes jump {
       0% {
-    top: 145px;
-  }
-  50% {
-    top: 35px;
-  }
-  100% {
-    top: 145px;
-  }
+        top: 145px;
+      }
+
+      50% {
+        top: 35px;
+      }
+
+      100% {
+        top: 145px;
+      }
     }
-    .garbages{
+
+    .garbages {
       position: absolute;
       height: 23px;
       width: 23px;
       bottom: 0px;
       right: 0px;
-      animation: move-left 1.5s infinite linear;
     }
-    .garbages img{
+
+    .garbages img {
       position: absolute;
       height: 30px;
       width: 30px;
       right: -3px;
       bottom: -4px;
     }
-    @keyframes move-left{
-     from{ transform: translateX(0);
-  }
-  to {
-    transform: translateX(-245px);
-  }
-    
+
+    @keyframes move-left {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-245px);
+      }
+    }
+
     p{
       text-align: center;
     }
-    </style>
-  </head>
-  <body>
-    <div class="arena">
-      <div class="man">
-        <img src="https://cdn1.iconfinder.com/data/icons/human-poses/100/poses-11-1024.png">
-      </div>
-      <div class="garbages">
-        <img src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-1024.png">
-      </div>
+
+    button{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="arena">
+    <div class="man">
+      <img src="https://cdn1.iconfinder.com/data/icons/human-poses/100/poses-11-1024.png">
     </div>
-    <p>Score: 0</p>
-  </body>
-  <script>
+    <div class="garbages">
+      <img src="https://cdn2.iconfinder.com/data/icons/squircle-ui/32/Trash-1024.png">
+    </div>
+  </div>
+  <p>Score: 0</p>
+  <button onclick="start()">Start</button>
+</body>
+<script>
+  var arena = document.querySelector(".arena");
   var isJumping = false;
-  var score = 0;
+  var score;
+
+  function start() {
+    document.querySelector(".garbages").style.animation = "move-left 1.5s infinite linear";
+    arena.addEventListener("click", jump);
+    score = 0;
+    document.querySelector("p").innerHTML = "Score: " + score;
+  }
+
   // Increment the score when the garbages animation completes a loop
-document.querySelector(".garbages").addEventListener("animationiteration", function() {
-  score++;
-  document.querySelector("p").innerHTML = "Score: " + score;
-});
+  document.querySelector(".garbages").addEventListener("animationiteration", function () {
+    score++;
+    document.querySelector("p").innerHTML = "Score: " + score;
+  });
 
   function checkCollision() {
-  // Get the bounding rectangles for the man and garbages elements
-  var manRect = document.querySelector(".man").getBoundingClientRect();
-  var garbageRect = document.querySelector(".garbages").getBoundingClientRect();
+    // Get the bounding rectangles for the man and garbages elements
+    var manRect = document.querySelector(".man").getBoundingClientRect();
+    var garbageRect = document.querySelector(".garbages").getBoundingClientRect();
 
-  // Check if the rectangles intersect
-  if (manRect.right > garbageRect.left && manRect.left < garbageRect.right && manRect.bottom > garbageRect.top && manRect.top < garbageRect.bottom) {
-    // Collision detected! Stop the garbages animation
-document.querySelector(".man").style.animation = "none";
-    document.querySelector(".garbages").style.animation = "none";
+    // Check if the rectangles intersect
+    if (manRect.right > garbageRect.left && manRect.left < garbageRect.right && manRect.bottom > garbageRect.top && manRect.top < garbageRect.bottom) {
+      // Collision detected! Stop the garbages animation
+      document.querySelector(".man").style.animation = "none";
+      document.querySelector(".garbages").style.animation = "none";
+      arena.removeEventListener("click", jump);
+    }
   }
-}
 
-// Check for a collision every 10 milliseconds
-setInterval(checkCollision, 10);
+  // Check for a collision every 10 milliseconds
+  setInterval(checkCollision, 10);
 
-  function jump(){
-    
+  function jump() {
+    scorespeed();
     if (isJumping) {
       return;
     }
@@ -112,14 +143,24 @@ setInterval(checkCollision, 10);
 
     var jumpanim = document.querySelector(".man");
     jumpanim.style.animation = "jump 600ms ease-in-out";
-    setTimeout(function() {
+    setTimeout(function () {
       jumpanim.style.animation = "";
       isJumping = false;
     }, 500);
-    
-    
+
   }
-  var arena = document.querySelector(".arena");
-  arena.addEventListener("click", jump);
-  </script>
+
+  function scorespeed(){
+    if(score >= 19 && score < 50){
+      document.querySelector(".garbages").style.animation = "move-left 1s infinite linear";
+    }
+    else if(score >= 50){
+      document.querySelector(".garbages").style.animation = "move-left 0.75s infinite linear";
+    }
+    else if(score >= 100){
+      document.querySelector(".garbages").style.animation = "move-left 0.5s infinite linear";
+    }
+  }
+</script>
+
 </html>
